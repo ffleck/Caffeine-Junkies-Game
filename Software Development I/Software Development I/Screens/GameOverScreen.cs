@@ -1,4 +1,4 @@
-#region File Description
+﻿#region File Description
 //-----------------------------------------------------------------------------
 // PauseMenuScreen.cs
 //
@@ -17,7 +17,7 @@ namespace Software_Development_I
     /// The pause menu comes up over the top of the game,
     /// giving the player options to resume or quit.
     /// </summary>
-    class PauseMenuScreen : MenuScreen
+    class GameOverScreen : MenuScreen
     {
         #region Initialization
 
@@ -25,13 +25,13 @@ namespace Software_Development_I
         /// <summary>
         /// Constructor.
         /// </summary>
-        public PauseMenuScreen()
-            : base("Paused")
+        public GameOverScreen()
+            : base("Game Over")
         {
             // Create our menu entries.
-            MenuEntry resumeGameMenuEntry = new MenuEntry("Resume Game");
-            MenuEntry quitGameMenuEntry = new MenuEntry("Quit Game");
-            
+            MenuEntry resumeGameMenuEntry = new MenuEntry("Retry");
+            MenuEntry quitGameMenuEntry = new MenuEntry("Back to main menu");
+
             // Hook up menu event handlers.
             resumeGameMenuEntry.Selected += OnCancel;
             quitGameMenuEntry.Selected += QuitGameMenuEntrySelected;
@@ -52,7 +52,7 @@ namespace Software_Development_I
         /// </summary>
         void QuitGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            const string message = "Are you sure you want to quit?";
+            const string message = "Are you sure you want to quit this game?";
 
             MessageBoxScreen confirmQuitMessageBox = new MessageBoxScreen(message);
 
